@@ -1,0 +1,31 @@
+ion-content ion-toolbar {
+  --background: translucent;
+}
+.label3{
+
+  font-size: 500;
+  font-weight: bold;
+  align-content: center;
+}
+
+
+
+.section-active{
+  background-color:#999999;
+  color:white;
+
+
+}
+.section{
+ background-color:#f4f4f4;
+ color:black;
+ }
+
+ ion-toolbar {
+  --background: #0078ca;
+  --color:white;
+}
+
+.Notes{
+  border : 1px solid black
+}

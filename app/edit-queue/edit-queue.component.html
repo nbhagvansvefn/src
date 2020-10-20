@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+<ion-buttons slot="start">
+
+  <ion-back-button icon="chevron-back-sharp" size ="large" defaultHref="/"></ion-back-button>
+
+</ion-buttons>
+<ion-title align ="center" >
+  {{appointmentService.queueItem.name}}
+</ion-title>
+
+</ion-toolbar>
+</ion-header>
+
+
+<ion-content fullscreen>
+
+  <div class ="container">
+  <form (ngSubmit) ="onsubmit()">
+
+    <ion-item color ="light">
+       <ion-label  position="floating">Queue Name<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input  [(ngModel)] = "appointmentService.queueItem.appointments[0].queue.queueName" name = "name"></ion-input>
+    </ion-item>
+    <br>
+
+    <ion-item   color ="light">
+        <ion-label position="floating">Max Num Of People In a Day<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input  [(ngModel)] = "appointmentService.queueItem.appointments[0].queue.maxAppointments" name = "maxAppointments" ></ion-input>
+    </ion-item>
+    <br>
+
+    <ion-item color ="light">
+        <ion-label position="floating">Avg time per Each Customer<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input  [(ngModel)] = "appointmentService.queueItem.appointments[0].queue.averageAppointmentInMins" name = "averageAppointmentInMins"></ion-input>
+    </ion-item>
+    <br>
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border text-primary" role="status" *ngIf = "showSpinner">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+
+    <br>
+    <div class="d-flex justify-content-center">
+      <button class ="btn btn-primary mr-2">Save</button>
+      <button class ="btn btn-danger">Delete</button>
+
+   </div>
+
+</form>
+
+</div>
+
+
+</ion-content>

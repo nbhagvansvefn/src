@@ -1,0 +1,66 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+<ion-buttons slot="start">
+
+  <ion-back-button icon="chevron-back-sharp" size ="large" defaultHref="/"></ion-back-button>
+
+</ion-buttons>
+<ion-title align ="center" >
+  {{ appointmentService.queueItem.customer.name}}
+</ion-title>
+
+</ion-toolbar>
+</ion-header>
+
+
+<ion-content fullscreen>
+<div class="container" padding>
+  <form (ngSubmit) ="onsubmit()">
+    <ion-list>
+    <ion-item lines="full" color ="light" >
+      <!-- <ion-label position="floating"> Enter your Name<ion-text color="danger">*</ion-text> </ion-label> -->
+     <ion-input align ="center" [(ngModel)] = "appointmentService.queueItem.customer.name" name = "name"></ion-input>
+    </ion-item>
+
+    <br>
+
+    <ion-item lines="full" color ="light" >
+      <!-- <ion-label position="floating"> Enter your Mobile number<ion-text color="danger">*</ion-text></ion-label> -->
+      <ion-input align ="center" [(ngModel)] = "appointmentService.queueItem.customer.phoneNumber" name = "phonenumber"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item color ="light">
+      <ion-datetime
+      class ="date" [(ngModel)]="appointmentService.queueItem.appointmentTime"
+      (ionChange)="onChangeDate(selectedDate)" display-format=" DD MMM YYYY h:m A" name = "date" ></ion-datetime>
+    </ion-item>
+    <br>
+    <ion-item color ="light">
+      <ion-label>Status</ion-label>
+      <ion-select  value="ACTIVE" name ="status"[(ngModel)] ="appointmentService.queueItem.status">
+        <ion-select-option value="ACTIVE">ACTIVE</ion-select-option>
+        <ion-select-option value="COMPLETED">COMPLETED</ion-select-option>
+        <ion-select-option value="NOSHOW">NOSHOW</ion-select-option>
+        <ion-select-option value="CANCELLED">CANCELLED</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <br>
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border text-primary" role="status" *ngIf = "showSpinner">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <br>
+    <div class="d-flex justify-content-center">
+      <button class ="btn btn-primary mr-2">Save</button>
+      <button class ="btn btn-danger">Cancel</button>
+
+   </div>
+  </ion-list>
+  </form>
+
+  </div>
+
+
+</ion-content>

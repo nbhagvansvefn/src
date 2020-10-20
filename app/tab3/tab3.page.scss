@@ -1,0 +1,18 @@
+ion-content ion-toolbar {
+  --background: translucent;
+}
+
+ion-toolbar {
+  --background: #0078ca;
+  --color:white;
+}
+
+.textColor{
+  color : white;
+
+}
+
+.active{background-color:#2dd36f}
+.completed{background-color:#3880ff}
+.cancelled{background-color:#ffc409}
+.noshow{background-color:#eb445a}

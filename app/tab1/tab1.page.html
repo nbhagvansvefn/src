@@ -1,0 +1,98 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title align ="center">
+      Welcome to Skipline
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content fullscreen>
+
+  <div class="container" padding>
+
+    <ion-item lines="full" color ="light">
+      <ion-label position="floating"> Enter your Name<ion-text color="danger">*</ion-text> </ion-label>
+     <ion-input [(ngModel)] ="custName" name ="custName" required type="text"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item lines="full" color ="light">
+      <ion-label position="floating"> Enter your Mobile number<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input [(ngModel)]="custPhoneNumber" name ="custPhoneNumber" required  type="text"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item color ="light">
+      <ion-label position="floating"> Select Date and Time<ion-text color="danger">*</ion-text></ion-label>
+      <ion-datetime
+      class ="date"
+      (ionChange)="onChangeDate(selectedDate)" display-format=" DD MMM YYYY h:m A"  [(ngModel)] ="appointmentTime"></ion-datetime>
+    </ion-item>
+    <br>
+    <div class="Notes" padding>
+      <ion-item>
+        <ion-textarea rows="4" cols="20" placeholder="Please Enter Your Notes Here...." [(ngModel)] = "notes"></ion-textarea>
+      </ion-item>
+    </div>
+
+
+
+
+
+
+
+
+  <ion-grid fixed>
+
+    <h1 position="floating" class="label3" align ="center"> Please Select Your Queue </h1>
+
+    <div class="d-flex justify-content-center">
+    <div class="spinner-border text-primary" role="status" *ngIf = "showSpinner">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+
+
+    <ion-row>
+      <ion-col size="12"
+      size-xs ="6"
+      size-sm ="6"
+      size-md ="4"
+      size-lg ="2.5"
+       *ngFor = "let item of dataNew; let i = index; ">
+
+
+            <ion-card class ="accordion-list" detail-none tappable (click) = "toggleSection(i)" [ngClass]="{'section-active': item.selected,'section':!item.selected}">
+          <ion-card-header>
+            <ion-card-title [ngClass]="{'section-active': item.selected,'section':!item.selected}">{{item.name}}</ion-card-title>
+            <ion-card-subtitle [ngClass]="{'section-active': item.selected,'section':!item.selected}">Wait Time 45 min</ion-card-subtitle>
+            <ion-card-subtitle [ngClass]="{'section-active': item.selected,'section':!item.selected}">People in Line 15</ion-card-subtitle>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+
+      <ion-col size="6"></ion-col>
+    </ion-row>
+
+  </ion-grid>
+  <br>
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border text-primary" role="status" *ngIf = "showSpinner1">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  <br>
+
+  <section align = "center">
+
+        <ion-button  color="success" size ="large" (click)="onSubmit()" name="submit" shape="round">JOIN NOW</ion-button>
+
+
+  </section>
+
+
+
+
+  </div>
+
+</ion-content>

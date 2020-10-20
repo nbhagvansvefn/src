@@ -1,0 +1,73 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+<ion-buttons slot="start">
+
+  <ion-back-button icon="chevron-back-sharp" size ="large" defaultHref="/"></ion-back-button>
+
+</ion-buttons>
+<ion-title align ="center" >
+ Add Appointment
+</ion-title>
+
+</ion-toolbar>
+</ion-header>
+
+
+<ion-content fullscreen>
+  <div class="container" padding>
+    <ion-searchbar #search debounce="500" (ionChange)="_ionChange($event)" ></ion-searchbar>
+    <ion-list *ngIf = "showContacts">
+      <ion-item *ngFor="let item of searchedItem ; let i = index; " (click)= "selectedCustomer(i)">
+        <!-- <ion-label>{{item.title}}</ion-label> -->
+        <ion-label>{{item.name}}</ion-label>
+      </ion-item>
+    </ion-list>
+      <ion-list>
+      <ion-item lines="full" color ="light" >
+        <ion-label position="floating"> Enter your Name<ion-text color="danger">*</ion-text> </ion-label>
+       <ion-input align ="center"  [(ngModel)] ="name"></ion-input>
+      </ion-item>
+
+      <br>
+
+      
+
+      <ion-item lines="full" color ="light" >
+        <ion-label position="floating"> Enter your Mobile number<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input align ="center"   [(ngModel)] ="phoneNumber"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item color ="light">
+        <ion-label position="floating"> Select Date and Time<ion-text color="danger">*</ion-text></ion-label>
+        <ion-datetime
+        class ="date"
+        (ionChange)="onChangeDate(selectedDate)" display-format=" DD MMM YYYY h:m A"  [(ngModel)] ="appointmentTime"></ion-datetime>
+      </ion-item>
+      <br>  
+
+      <div class="Notes" padding>
+        <ion-item>
+          <ion-textarea rows="4" cols="20" placeholder="Please Enter Your Notes Here...." [(ngModel)] = "notes"></ion-textarea>
+        </ion-item>
+      </div>
+
+      <br>
+       <div class="d-flex justify-content-center">
+      <div class="spinner-border text-primary" role="status" *ngIf = "showSpinner">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <br>
+      <div class="d-flex justify-content-center">
+        <button class ="btn btn-primary mr-2" (click)="onsubmit()">Save</button>
+        <button class ="btn btn-danger">Cancel</button>
+
+     </div>
+    </ion-list>
+
+
+    </div>
+
+
+  </ion-content>

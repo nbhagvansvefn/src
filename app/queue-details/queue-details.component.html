@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+<ion-buttons slot="start">
+
+  <ion-back-button icon="chevron-back-sharp" size ="large" defaultHref="/"></ion-back-button>
+
+</ion-buttons>
+<ion-title align ="center" >
+  {{appointmentService.queueItem.name}}
+</ion-title>
+
+</ion-toolbar>
+</ion-header>
+
+
+
+
+
+<ion-content>
+  <div class="container">
+<ion-list>
+
+
+<ion-item *ngFor = "let child of appointmentService.queueItem.appointments ; let j = index;" color ="light"  >
+
+<ion-icon name="create-outline" slot="end" color="primary" size="large" (click)= "appointmentSelected(child)" ></ion-icon>
+<!-- <ion-icon name="close-circle-outline" slot="end" color="danger" size="large" (click)="alertCancel()"></ion-icon>
+
+<ion-icon name="checkmark-circle-outline" slot="end" color="success" size="large" (click)="alertConfirm()"></ion-icon> -->
+
+<label > {{child.customer.name}}</label>
+<label  slot="end" Class ="status">{{child.status}}</label>
+
+</ion-item>
+
+
+
+
+</ion-list>
+</div>
+</ion-content>

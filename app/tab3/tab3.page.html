@@ -1,0 +1,117 @@
+<ion-header [translucent]="true">
+  <ion-toolbar >
+    <!-- <ion-icon name="calendar-sharp" size ="large" slot ="end" (click) = "toggleCalenderPreview()"></ion-icon> -->
+    <ion-title align ="center">
+      Dashboard
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<!-- <div class="container"> -->
+  <!-- <div class="ion-padding" *ngIf ="previewCalender">
+    <ion-datetime [(ngModel)]="selectedDate" (ionChange)="onChangeDate(selectedDate)" display-format=" DD MMM YYYY" ></ion-datetime>
+    <ion-calendar [(ngModel)]="selectedDate" (ionChange)="onChangeDate(selectedDate)" display-format=" DD MMM YYYY">
+    </ion-calendar>
+
+  </div>
+  
+
+
+  <ion-item color ="light">
+    <ion-label >Select Date and Month</ion-label>
+    <ion-datetime [(ngModel)]="selectedDate" (ionChange)="onChangeDate(selectedDate)" display-format=" DD MMM YYYY" ></ion-datetime>
+  </ion-item> -->
+
+  <br>
+
+  <ion-item color ="light">
+    <ion-select  value="Today" name ="status" slot ="end" [(ngModel)]="option" (ionChange)="onOptionChange()">
+      <ion-select-option required  value="Today">Today</ion-select-option>
+      <ion-select-option required  value="Last 7 Days">Last 7 Days</ion-select-option>
+      <ion-select-option required  value="Last 30 Days">Last 30 Days</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <br>
+
+  <ion-card color ="light">
+    <ion-card-header align ="center">
+      
+      <ion-card-title align ="center">{{option}} Status Data</ion-card-title> 
+     </ion-card-header>
+  <ion-grid>
+    
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border text-primary" role="status" *ngIf = "showSpinner1">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <ion-row>
+   
+      
+      <ion-col *ngFor = "let item of OveralGraphResponses; let i = index;" size ="3">
+        
+       <ion-card [ngClass] = "getColors(i)">
+        <ion-text class = "textColor">
+         <ion-card-header align ="center" > {{item.status}} -- {{item.queueName}} </ion-card-header>
+        </ion-text>
+        <ion-text class = "textColor">
+         <ion-card-header align ="center" > {{item.statusCount}}  </ion-card-header>
+        </ion-text>
+        </ion-card>
+       <br>
+      </ion-col>
+
+  
+    </ion-row>
+  </ion-grid>
+</ion-card>
+<br>
+  <ion-card color ="light">
+    <ion-card-header class="header"> 
+      <ion-card-title align ="center" class="textColor">{{option}} Status Data</ion-card-title>
+    </ion-card-header>
+    <br>
+    <ion-card-content>
+      
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border text-primary" role="status" *ngIf = "showSpinner2">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+      <google-chart [data]="columnChart1"></google-chart>
+    </ion-card-content>
+  </ion-card>
+
+  <br>
+
+  <ion-card color ="light">
+    <ion-card-header align ="center">
+      <ion-card-title align ="center">Overall Status Data</ion-card-title> 
+     </ion-card-header>
+  <ion-grid>
+    
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border text-primary" role="status" *ngIf = "showSpinner3">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <ion-row>    
+  <ion-col *ngFor = "let item of GraphResponses; let i = index;" size ="3">
+        
+    <ion-card [ngClass] = "getColors(i)">
+      <ion-text class = "textColor">
+      <ion-card-header align ="center" > {{item.status}} -- {{item.queueName}} </ion-card-header>
+    </ion-text>
+      <ion-text class = "textColor">
+         <ion-card-header align ="center" > {{item.statusCount}}  </ion-card-header>
+      </ion-text>
+    </ion-card>
+    <br>
+   </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-card>
+
+</ion-content>

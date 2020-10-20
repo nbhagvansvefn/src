@@ -1,0 +1,79 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="chevron-back-sharp" size ="large" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title align ="center">Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class ="container">
+    <br>
+    <!-- <ion-item lines="full">
+      <ion-label position="floating">Full name<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item> -->
+
+ 
+    <br>
+    <ion-item lines="full" color ="light">
+      <ion-label position="floating">UserId<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input type="text"  [(ngModel)]="userId" required></ion-input>
+    </ion-item>
+    <br>
+    <ion-item lines="full" color ="light">
+      <ion-label position="floating">Password<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input type="password" required [(ngModel)]="password"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item lines="full" color ="light">
+      <ion-label position="floating">firstName<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input type="text" required [(ngModel)]="firstName"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item lines="full" color ="light">
+      <ion-label position="floating">Email<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input type="text" required [(ngModel)]="email"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item lines="full" color ="light">
+      <ion-label position="floating">PhoneNumber<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input type="text" required [(ngModel)] ="phoneNumber"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item lines="full" color ="light">
+      <ion-label position="floating">OrganizationName<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input type="text" required [(ngModel)] ="orgName"></ion-input>
+    </ion-item>
+    <br>
+    <!-- <ion-item lines="full" color ="light">
+      <ion-label position="floating">Role<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input type="text" required [(ngModel)] ="roleId"></ion-input>
+    </ion-item> -->
+    <ion-item color ="light">
+      <ion-label>Adminstartor Type</ion-label>
+      <ion-select  value="3" name ="status" [(ngModel)] ="roleId">
+        <ion-select-option value="3" >Individual</ion-select-option>
+        <ion-select-option value="2" >Organization</ion-select-option>
+        <ion-select-option value="1" >Maintenance</ion-select-option>
+      </ion-select>
+    </ion-item>
+     
+    <br>
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border text-primary" role="status" *ngIf = "showSpinner">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <br>
+    <div class="d-flex justify-content-center">
+
+        <ion-button type="submit" color="danger" expand="block" (click)="onClickRegistration()">Sign Up</ion-button>
+      </div>
+
+  
+</div>
+</ion-content>
+

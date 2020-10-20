@@ -1,0 +1,60 @@
+<ion-header [translucent]="true">
+  <ion-toolbar  class ="header">
+    <ion-title align ="center" class ="title" >
+      Skipline
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class = "container" >
+    <br>
+
+    <ion-item lines="full" color="light">
+      <ion-label position="floating">User ID</ion-label>
+     <ion-input type="text" ></ion-input>
+    </ion-item>
+
+    <br>
+
+    <ion-item lines="full" color="light">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password"></ion-input>
+    </ion-item>
+
+    <br>
+
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border text-primary" role="status" *ngIf = "showSpinner">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="d-flex justify-content-center">
+      <ion-button  (click) = "signIn()" color= "danger" >LOGIN</ion-button>
+    </div>
+
+    <br>
+
+    <div class="d-flex justify-content-center">
+      <a [routerLink]="['/forgot-password']" class="small-text">Forgot Password or UserId?</a>
+    </div>
+
+    <!-- <ion-grid>
+      <ion-row>
+        <ion-col align-self-center>
+
+          <span class="divider line one-line">or</span>
+
+          <span class="already">Already a user?</span>
+          <div class="d-flex justify-content-center">
+          <ion-button [routerLink]="['/registration']"  color="success" >Register</ion-button>
+        </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid> -->
+
+  </div>
+</ion-content>
